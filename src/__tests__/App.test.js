@@ -32,7 +32,7 @@ describe("App component", () => {
     const searchInput = screen.getByPlaceholderText("search for movies");
     fireEvent.change(searchInput, { target: { value: "Spiderman" } });
 
-    // Simulate clicking the search button
+    //clicking the search button
     const searchButton = screen.getByAltText("search");
     fireEvent.click(searchButton);
 
@@ -59,15 +59,15 @@ describe("App component", () => {
 
     render(<App />);
 
-    // Simulate typing into the search input
+    //  typing into the search input
     const searchInput = screen.getByPlaceholderText("search for movies");
     fireEvent.change(searchInput, { target: { value: "NonExistentMovie" } });
 
-    // Simulate clicking the search button
+    //  clicking the search button
     const searchButton = screen.getByAltText("search");
     fireEvent.click(searchButton);
 
-    // Wait for the API call to complete
+    // Wait for  API call to complete
     await waitFor(() => {
       // Check if the 'No movies found' message is displayed
       expect(screen.getByText("No movies found")).toBeInTheDocument();
