@@ -2941,24 +2941,21 @@ var prevRefreshSig = window.$RefreshSig$;
 $parcel$ReactRefreshHelpers$20e5.prelude(module);
 
 try {
-"use strict";
-var _react = _interopRequireDefault(require("379ec07e2eead772"));
-var _reactDom = require("bb7fccdfddb8410f");
-var _App = _interopRequireDefault(require("3c8d065cfbf331fa"));
-var _jsxRuntime = require("77092f8820d6a2d3");
-function _interopRequireDefault(obj) {
-    return obj && obj.__esModule ? obj : {
-        "default": obj
-    };
-}
-(0, _reactDom.render)(/*#__PURE__*/ (0, _jsxRuntime.jsx)(_App["default"], {}), document.getElementById("root"));
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _reactDom = require("react-dom");
+var _app = require("./App");
+var _appDefault = parcelHelpers.interopDefault(_app);
+var _jsxRuntime = require("react/jsx-runtime");
+(0, _reactDom.render)(/*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _appDefault.default), {}), document.getElementById("root"));
 
   $parcel$ReactRefreshHelpers$20e5.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"379ec07e2eead772":"21dqq","bb7fccdfddb8410f":"j6uA9","3c8d065cfbf331fa":"2kQhy","77092f8820d6a2d3":"6AEwr","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"21dqq":[function(require,module,exports) {
+},{"react":"21dqq","react-dom":"j6uA9","./App":"2kQhy","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react/jsx-runtime":"6AEwr"}],"21dqq":[function(require,module,exports) {
 "use strict";
 module.exports = require("a569817e6ea559f6");
 
@@ -23816,430 +23813,32 @@ var prevRefreshSig = window.$RefreshSig$;
 $parcel$ReactRefreshHelpers$f00f.prelude(module);
 
 try {
-"use strict";
-function _typeof(o) {
-    "@babel/helpers - typeof";
-    return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o) {
-        return typeof o;
-    } : function(o) {
-        return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o;
-    }, _typeof(o);
-}
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports["default"] = void 0;
-var _react = require("45e8193f4240b0ee");
-var _MovieCard = _interopRequireDefault(require("af4970479969821e"));
-var _search = _interopRequireDefault(require("d40663f10bdb844"));
-var _jsxRuntime = require("81b1698b765d4cf3");
-function _interopRequireDefault(obj) {
-    return obj && obj.__esModule ? obj : {
-        "default": obj
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+var _movieCard = require("./MovieCard");
+var _movieCardDefault = parcelHelpers.interopDefault(_movieCard);
+var _searchSvg = require("./search.svg");
+var _searchSvgDefault = parcelHelpers.interopDefault(_searchSvg);
+var _jsxRuntime = require("react/jsx-runtime");
+var _s = $RefreshSig$();
+const API_KEY = "6d8d658b";
+const API_URL = `http://www.omdbapi.com?apikey=${API_KEY}`;
+const App = ()=>{
+    _s();
+    const [movies, setMovies] = (0, _react.useState)([]);
+    const [searchTerm, setSearchTerm] = (0, _react.useState)("");
+    const searchMovies = async (title)=>{
+        const response = await fetch(`${API_URL}&s=${title}`);
+        if (!response.ok) // Handle HTTP error responses
+        throw new Error(`HTTP error! Status: ${response.status}`);
+        const data = await response.json();
+        if (data.Response === "False") // Handle API error responses
+        throw new Error(data.Error);
+        setMovies(data.Search);
+        console.log(data);
     };
-}
-function _regeneratorRuntime() {
-    "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ 
-    _regeneratorRuntime = function _regeneratorRuntime() {
-        return e;
-    };
-    var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function(t, e, r) {
-        t[e] = r.value;
-    }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag";
-    function define(t, e, r) {
-        return Object.defineProperty(t, e, {
-            value: r,
-            enumerable: !0,
-            configurable: !0,
-            writable: !0
-        }), t[e];
-    }
-    try {
-        define({}, "");
-    } catch (t) {
-        define = function define(t, e, r) {
-            return t[e] = r;
-        };
-    }
-    function wrap(t, e, r, n) {
-        var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []);
-        return o(a, "_invoke", {
-            value: makeInvokeMethod(t, r, c)
-        }), a;
-    }
-    function tryCatch(t, e, r) {
-        try {
-            return {
-                type: "normal",
-                arg: t.call(e, r)
-            };
-        } catch (t) {
-            return {
-                type: "throw",
-                arg: t
-            };
-        }
-    }
-    e.wrap = wrap;
-    var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {};
-    function Generator() {}
-    function GeneratorFunction() {}
-    function GeneratorFunctionPrototype() {}
-    var p = {};
-    define(p, a, function() {
-        return this;
-    });
-    var d = Object.getPrototypeOf, v = d && d(d(values([])));
-    v && v !== r && n.call(v, a) && (p = v);
-    var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p);
-    function defineIteratorMethods(t) {
-        [
-            "next",
-            "throw",
-            "return"
-        ].forEach(function(e) {
-            define(t, e, function(t) {
-                return this._invoke(e, t);
-            });
-        });
-    }
-    function AsyncIterator(t, e) {
-        function invoke(r, o, i, a) {
-            var c = tryCatch(t[r], t, o);
-            if ("throw" !== c.type) {
-                var u = c.arg, h = u.value;
-                return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function(t) {
-                    invoke("next", t, i, a);
-                }, function(t) {
-                    invoke("throw", t, i, a);
-                }) : e.resolve(h).then(function(t) {
-                    u.value = t, i(u);
-                }, function(t) {
-                    return invoke("throw", t, i, a);
-                });
-            }
-            a(c.arg);
-        }
-        var r;
-        o(this, "_invoke", {
-            value: function value(t, n) {
-                function callInvokeWithMethodAndArg() {
-                    return new e(function(e, r) {
-                        invoke(t, n, e, r);
-                    });
-                }
-                return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg();
-            }
-        });
-    }
-    function makeInvokeMethod(e, r, n) {
-        var o = h;
-        return function(i, a) {
-            if (o === f) throw new Error("Generator is already running");
-            if (o === s) {
-                if ("throw" === i) throw a;
-                return {
-                    value: t,
-                    done: !0
-                };
-            }
-            for(n.method = i, n.arg = a;;){
-                var c = n.delegate;
-                if (c) {
-                    var u = maybeInvokeDelegate(c, n);
-                    if (u) {
-                        if (u === y) continue;
-                        return u;
-                    }
-                }
-                if ("next" === n.method) n.sent = n._sent = n.arg;
-                else if ("throw" === n.method) {
-                    if (o === h) throw o = s, n.arg;
-                    n.dispatchException(n.arg);
-                } else "return" === n.method && n.abrupt("return", n.arg);
-                o = f;
-                var p = tryCatch(e, r, n);
-                if ("normal" === p.type) {
-                    if (o = n.done ? s : l, p.arg === y) continue;
-                    return {
-                        value: p.arg,
-                        done: n.done
-                    };
-                }
-                "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg);
-            }
-        };
-    }
-    function maybeInvokeDelegate(e, r) {
-        var n = r.method, o = e.iterator[n];
-        if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y;
-        var i = tryCatch(o, e.iterator, r.arg);
-        if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y;
-        var a = i.arg;
-        return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y);
-    }
-    function pushTryEntry(t) {
-        var e = {
-            tryLoc: t[0]
-        };
-        1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e);
-    }
-    function resetTryEntry(t) {
-        var e = t.completion || {};
-        e.type = "normal", delete e.arg, t.completion = e;
-    }
-    function Context(t) {
-        this.tryEntries = [
-            {
-                tryLoc: "root"
-            }
-        ], t.forEach(pushTryEntry, this), this.reset(!0);
-    }
-    function values(e) {
-        if (e || "" === e) {
-            var r = e[a];
-            if (r) return r.call(e);
-            if ("function" == typeof e.next) return e;
-            if (!isNaN(e.length)) {
-                var o = -1, i = function next() {
-                    for(; ++o < e.length;)if (n.call(e, o)) return next.value = e[o], next.done = !1, next;
-                    return next.value = t, next.done = !0, next;
-                };
-                return i.next = i;
-            }
-        }
-        throw new TypeError(_typeof(e) + " is not iterable");
-    }
-    return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", {
-        value: GeneratorFunctionPrototype,
-        configurable: !0
-    }), o(GeneratorFunctionPrototype, "constructor", {
-        value: GeneratorFunction,
-        configurable: !0
-    }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function(t) {
-        var e = "function" == typeof t && t.constructor;
-        return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name));
-    }, e.mark = function(t) {
-        return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t;
-    }, e.awrap = function(t) {
-        return {
-            __await: t
-        };
-    }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function() {
-        return this;
-    }), e.AsyncIterator = AsyncIterator, e.async = function(t, r, n, o, i) {
-        void 0 === i && (i = Promise);
-        var a = new AsyncIterator(wrap(t, r, n, o), i);
-        return e.isGeneratorFunction(r) ? a : a.next().then(function(t) {
-            return t.done ? t.value : a.next();
-        });
-    }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function() {
-        return this;
-    }), define(g, "toString", function() {
-        return "[object Generator]";
-    }), e.keys = function(t) {
-        var e = Object(t), r = [];
-        for(var n in e)r.push(n);
-        return r.reverse(), function next() {
-            for(; r.length;){
-                var t = r.pop();
-                if (t in e) return next.value = t, next.done = !1, next;
-            }
-            return next.done = !0, next;
-        };
-    }, e.values = values, Context.prototype = {
-        constructor: Context,
-        reset: function reset(e) {
-            if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for(var r in this)"t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t);
-        },
-        stop: function stop() {
-            this.done = !0;
-            var t = this.tryEntries[0].completion;
-            if ("throw" === t.type) throw t.arg;
-            return this.rval;
-        },
-        dispatchException: function dispatchException(e) {
-            if (this.done) throw e;
-            var r = this;
-            function handle(n, o) {
-                return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o;
-            }
-            for(var o = this.tryEntries.length - 1; o >= 0; --o){
-                var i = this.tryEntries[o], a = i.completion;
-                if ("root" === i.tryLoc) return handle("end");
-                if (i.tryLoc <= this.prev) {
-                    var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc");
-                    if (c && u) {
-                        if (this.prev < i.catchLoc) return handle(i.catchLoc, !0);
-                        if (this.prev < i.finallyLoc) return handle(i.finallyLoc);
-                    } else if (c) {
-                        if (this.prev < i.catchLoc) return handle(i.catchLoc, !0);
-                    } else {
-                        if (!u) throw new Error("try statement without catch or finally");
-                        if (this.prev < i.finallyLoc) return handle(i.finallyLoc);
-                    }
-                }
-            }
-        },
-        abrupt: function abrupt(t, e) {
-            for(var r = this.tryEntries.length - 1; r >= 0; --r){
-                var o = this.tryEntries[r];
-                if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) {
-                    var i = o;
-                    break;
-                }
-            }
-            i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null);
-            var a = i ? i.completion : {};
-            return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a);
-        },
-        complete: function complete(t, e) {
-            if ("throw" === t.type) throw t.arg;
-            return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y;
-        },
-        finish: function finish(t) {
-            for(var e = this.tryEntries.length - 1; e >= 0; --e){
-                var r = this.tryEntries[e];
-                if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y;
-            }
-        },
-        "catch": function _catch(t) {
-            for(var e = this.tryEntries.length - 1; e >= 0; --e){
-                var r = this.tryEntries[e];
-                if (r.tryLoc === t) {
-                    var n = r.completion;
-                    if ("throw" === n.type) {
-                        var o = n.arg;
-                        resetTryEntry(r);
-                    }
-                    return o;
-                }
-            }
-            throw new Error("illegal catch attempt");
-        },
-        delegateYield: function delegateYield(e, r, n) {
-            return this.delegate = {
-                iterator: values(e),
-                resultName: r,
-                nextLoc: n
-            }, "next" === this.method && (this.arg = t), y;
-        }
-    }, e;
-}
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
-    try {
-        var info = gen[key](arg);
-        var value = info.value;
-    } catch (error) {
-        reject(error);
-        return;
-    }
-    if (info.done) resolve(value);
-    else Promise.resolve(value).then(_next, _throw);
-}
-function _asyncToGenerator(fn) {
-    return function() {
-        var self = this, args = arguments;
-        return new Promise(function(resolve, reject) {
-            var gen = fn.apply(self, args);
-            function _next(value) {
-                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
-            }
-            function _throw(err) {
-                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
-            }
-            _next(undefined);
-        });
-    };
-}
-function _slicedToArray(arr, i) {
-    return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
-}
-function _nonIterableRest() {
-    throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-function _unsupportedIterableToArray(o, minLen) {
-    if (!o) return;
-    if (typeof o === "string") return _arrayLikeToArray(o, minLen);
-    var n = Object.prototype.toString.call(o).slice(8, -1);
-    if (n === "Object" && o.constructor) n = o.constructor.name;
-    if (n === "Map" || n === "Set") return Array.from(o);
-    if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
-}
-function _arrayLikeToArray(arr, len) {
-    if (len == null || len > arr.length) len = arr.length;
-    for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
-    return arr2;
-}
-function _iterableToArrayLimit(r, l) {
-    var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"];
-    if (null != t) {
-        var e, n, i, u, a = [], f = !0, o = !1;
-        try {
-            if (i = (t = t.call(r)).next, 0 === l) {
-                if (Object(t) !== t) return;
-                f = !1;
-            } else for(; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0);
-        } catch (r) {
-            o = !0, n = r;
-        } finally{
-            try {
-                if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return;
-            } finally{
-                if (o) throw n;
-            }
-        }
-        return a;
-    }
-}
-function _arrayWithHoles(arr) {
-    if (Array.isArray(arr)) return arr;
-}
-var API_KEY = "6d8d658b";
-var API_URL = "http://www.omdbapi.com?apikey=".concat(API_KEY);
-_c = API_URL;
-var App = function App() {
-    var _useState = (0, _react.useState)([]), _useState2 = _slicedToArray(_useState, 2), movies = _useState2[0], setMovies = _useState2[1];
-    var _useState3 = (0, _react.useState)(""), _useState4 = _slicedToArray(_useState3, 2), searchTerm = _useState4[0], setSearchTerm = _useState4[1];
-    var searchMovies = /*#__PURE__*/ function() {
-        var _ref = _asyncToGenerator(/*#__PURE__*/ _regeneratorRuntime().mark(function _callee(title) {
-            var response, data;
-            return _regeneratorRuntime().wrap(function _callee$(_context) {
-                while(true)switch(_context.prev = _context.next){
-                    case 0:
-                        _context.next = 2;
-                        return fetch("".concat(API_URL, "&s=").concat(title));
-                    case 2:
-                        response = _context.sent;
-                        if (response.ok) {
-                            _context.next = 5;
-                            break;
-                        }
-                        throw new Error("HTTP error! Status: ".concat(response.status));
-                    case 5:
-                        _context.next = 7;
-                        return response.json();
-                    case 7:
-                        data = _context.sent;
-                        if (!(data.Response === "False")) {
-                            _context.next = 10;
-                            break;
-                        }
-                        throw new Error(data.Error);
-                    case 10:
-                        setMovies(data.Search);
-                        console.log(data);
-                    case 12:
-                    case "end":
-                        return _context.stop();
-                }
-            }, _callee);
-        }));
-        return function searchMovies(_x) {
-            return _ref.apply(this, arguments);
-        };
-    }();
-    (0, _react.useEffect)(function() {
+    (0, _react.useEffect)(()=>{
         searchMovies("spiderman");
     }, []);
     return /*#__PURE__*/ (0, _jsxRuntime.jsxs)("div", {
@@ -24254,26 +23853,20 @@ var App = function App() {
                     /*#__PURE__*/ (0, _jsxRuntime.jsx)("input", {
                         placeholder: "search for movies",
                         value: searchTerm,
-                        onChange: function onChange(e) {
-                            return setSearchTerm(e.target.value);
-                        }
+                        onChange: (e)=>setSearchTerm(e.target.value)
                     }),
                     /*#__PURE__*/ (0, _jsxRuntime.jsx)("img", {
-                        src: _search["default"],
+                        src: (0, _searchSvgDefault.default),
                         alt: "search",
-                        onClick: function onClick() {
-                            return searchMovies(searchTerm);
-                        }
+                        onClick: ()=>searchMovies(searchTerm)
                     })
                 ]
             }),
-            (movies === null || movies === void 0 ? void 0 : movies.length) > 0 ? /*#__PURE__*/ (0, _jsxRuntime.jsx)("div", {
+            movies?.length > 0 ? /*#__PURE__*/ (0, _jsxRuntime.jsx)("div", {
                 className: "container",
-                children: movies.map(function(movie) {
-                    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(_MovieCard["default"], {
+                children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _movieCardDefault.default), {
                         movie: movie
-                    }, movie.imdbID);
-                })
+                    }, movie.imdbID))
             }) : /*#__PURE__*/ (0, _jsxRuntime.jsx)("div", {
                 className: "empty",
                 children: /*#__PURE__*/ (0, _jsxRuntime.jsx)("h2", {
@@ -24283,33 +23876,28 @@ var App = function App() {
         ]
     });
 };
-_c1 = App;
-var _default = App;
-exports["default"] = _default;
-var _c, _c1;
-$RefreshReg$(_c, "API_URL");
-$RefreshReg$(_c1, "App");
+_s(App, "aQi/tms59DsvcxPuc/aDP6Uhs+E=");
+_c = App;
+exports.default = App;
+var _c;
+$RefreshReg$(_c, "App");
 
   $parcel$ReactRefreshHelpers$f00f.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"45e8193f4240b0ee":"21dqq","af4970479969821e":"26IMS","d40663f10bdb844":"1Ej4k","81b1698b765d4cf3":"6AEwr","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"26IMS":[function(require,module,exports) {
+},{"react":"21dqq","./MovieCard":"26IMS","./search.svg":"1Ej4k","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react/jsx-runtime":"6AEwr"}],"26IMS":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$3a84 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
 $parcel$ReactRefreshHelpers$3a84.prelude(module);
 
 try {
-"use strict";
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports["default"] = void 0;
-var _jsxRuntime = require("417b162fef622578");
-var MovieCard = function MovieCard(_ref) {
-    var movie = _ref.movie;
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxRuntime = require("react/jsx-runtime");
+const MovieCard = ({ movie })=>{
     return /*#__PURE__*/ (0, _jsxRuntime.jsxs)("div", {
         className: "movie",
         children: [
@@ -24338,8 +23926,7 @@ var MovieCard = function MovieCard(_ref) {
     });
 };
 _c = MovieCard;
-var _default = MovieCard;
-exports["default"] = _default;
+exports.default = MovieCard;
 var _c;
 $RefreshReg$(_c, "MovieCard");
 
@@ -24348,7 +23935,175 @@ $RefreshReg$(_c, "MovieCard");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"417b162fef622578":"6AEwr","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"6AEwr":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react/jsx-runtime":"6AEwr"}],"gkKU3":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, "__esModule", {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === "default" || key === "__esModule" || dest.hasOwnProperty(key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"km3Ru":[function(require,module,exports) {
+"use strict";
+var Refresh = require("7422ead32dcc1e6b");
+function debounce(func, delay) {
+    {
+        let timeout = undefined;
+        let lastTime = 0;
+        return function(args) {
+            // Call immediately if last call was more than the delay ago.
+            // Otherwise, set a timeout. This means the first call is fast
+            // (for the common case of a single update), and subsequent updates
+            // are batched.
+            let now = Date.now();
+            if (now - lastTime > delay) {
+                lastTime = now;
+                func.call(null, args);
+            } else {
+                clearTimeout(timeout);
+                timeout = setTimeout(function() {
+                    timeout = undefined;
+                    lastTime = Date.now();
+                    func.call(null, args);
+                }, delay);
+            }
+        };
+    }
+}
+var enqueueUpdate = debounce(function() {
+    Refresh.performReactRefresh();
+}, 30);
+// Everthing below is either adapted or copied from
+// https://github.com/facebook/metro/blob/61de16bd1edd7e738dd0311c89555a644023ab2d/packages/metro/src/lib/polyfills/require.js
+// MIT License - Copyright (c) Facebook, Inc. and its affiliates.
+module.exports.prelude = function(module1) {
+    window.$RefreshReg$ = function(type, id) {
+        Refresh.register(type, module1.id + " " + id);
+    };
+    window.$RefreshSig$ = Refresh.createSignatureFunctionForTransform;
+};
+module.exports.postlude = function(module1) {
+    if (isReactRefreshBoundary(module1.exports)) {
+        registerExportsForReactRefresh(module1);
+        if (module1.hot) {
+            module1.hot.dispose(function(data) {
+                if (Refresh.hasUnrecoverableErrors()) window.location.reload();
+                data.prevExports = module1.exports;
+            });
+            module1.hot.accept(function(getParents) {
+                var prevExports = module1.hot.data.prevExports;
+                var nextExports = module1.exports;
+                // Since we just executed the code for it, it's possible
+                // that the new exports make it ineligible for being a boundary.
+                var isNoLongerABoundary = !isReactRefreshBoundary(nextExports);
+                // It can also become ineligible if its exports are incompatible
+                // with the previous exports.
+                // For example, if you add/remove/change exports, we'll want
+                // to re-execute the importing modules, and force those components
+                // to re-render. Similarly, if you convert a class component
+                // to a function, we want to invalidate the boundary.
+                var didInvalidate = shouldInvalidateReactRefreshBoundary(prevExports, nextExports);
+                if (isNoLongerABoundary || didInvalidate) {
+                    // We'll be conservative. The only case in which we won't do a full
+                    // reload is if all parent modules are also refresh boundaries.
+                    // In that case we'll add them to the current queue.
+                    var parents = getParents();
+                    if (parents.length === 0) {
+                        // Looks like we bubbled to the root. Can't recover from that.
+                        window.location.reload();
+                        return;
+                    }
+                    return parents;
+                }
+                enqueueUpdate();
+            });
+        }
+    }
+};
+function isReactRefreshBoundary(exports) {
+    if (Refresh.isLikelyComponentType(exports)) return true;
+    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
+    return false;
+    var hasExports = false;
+    var areAllExportsComponents = true;
+    let isESM = "__esModule" in exports;
+    for(var key in exports){
+        hasExports = true;
+        if (key === "__esModule") continue;
+        var desc = Object.getOwnPropertyDescriptor(exports, key);
+        if (desc && desc.get && !isESM) // Don't invoke getters for CJS as they may have side effects.
+        return false;
+        var exportValue = exports[key];
+        if (!Refresh.isLikelyComponentType(exportValue)) areAllExportsComponents = false;
+    }
+    return hasExports && areAllExportsComponents;
+}
+function shouldInvalidateReactRefreshBoundary(prevExports, nextExports) {
+    var prevSignature = getRefreshBoundarySignature(prevExports);
+    var nextSignature = getRefreshBoundarySignature(nextExports);
+    if (prevSignature.length !== nextSignature.length) return true;
+    for(var i = 0; i < nextSignature.length; i++){
+        if (prevSignature[i] !== nextSignature[i]) return true;
+    }
+    return false;
+}
+// When this signature changes, it's unsafe to stop at this refresh boundary.
+function getRefreshBoundarySignature(exports) {
+    var signature = [];
+    signature.push(Refresh.getFamilyByType(exports));
+    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
+    // (This is important for legacy environments.)
+    return signature;
+    let isESM = "__esModule" in exports;
+    for(var key in exports){
+        if (key === "__esModule") continue;
+        var desc = Object.getOwnPropertyDescriptor(exports, key);
+        if (desc && desc.get && !isESM) continue;
+        var exportValue = exports[key];
+        signature.push(key);
+        signature.push(Refresh.getFamilyByType(exportValue));
+    }
+    return signature;
+}
+function registerExportsForReactRefresh(module1) {
+    var exports = module1.exports, id = module1.id;
+    Refresh.register(exports, id + " %exports%");
+    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
+    // (This is important for legacy environments.)
+    return;
+    let isESM = "__esModule" in exports;
+    for(var key in exports){
+        var desc = Object.getOwnPropertyDescriptor(exports, key);
+        if (desc && desc.get && !isESM) continue;
+        var exportValue = exports[key];
+        var typeID = id + " %exports% " + key;
+        Refresh.register(exportValue, typeID);
+    }
+}
+
+},{"7422ead32dcc1e6b":"786KC"}],"6AEwr":[function(require,module,exports) {
 "use strict";
 module.exports = require("c4c10cbba9862d5f");
 
@@ -25143,145 +24898,7 @@ module.exports = require("c4c10cbba9862d5f");
     exports.jsxs = jsxs;
 })();
 
-},{"593632ccebda0d3a":"21dqq","810078e9315626ae":"7OXxh"}],"km3Ru":[function(require,module,exports) {
-"use strict";
-var Refresh = require("7422ead32dcc1e6b");
-function debounce(func, delay) {
-    {
-        let timeout = undefined;
-        let lastTime = 0;
-        return function(args) {
-            // Call immediately if last call was more than the delay ago.
-            // Otherwise, set a timeout. This means the first call is fast
-            // (for the common case of a single update), and subsequent updates
-            // are batched.
-            let now = Date.now();
-            if (now - lastTime > delay) {
-                lastTime = now;
-                func.call(null, args);
-            } else {
-                clearTimeout(timeout);
-                timeout = setTimeout(function() {
-                    timeout = undefined;
-                    lastTime = Date.now();
-                    func.call(null, args);
-                }, delay);
-            }
-        };
-    }
-}
-var enqueueUpdate = debounce(function() {
-    Refresh.performReactRefresh();
-}, 30);
-// Everthing below is either adapted or copied from
-// https://github.com/facebook/metro/blob/61de16bd1edd7e738dd0311c89555a644023ab2d/packages/metro/src/lib/polyfills/require.js
-// MIT License - Copyright (c) Facebook, Inc. and its affiliates.
-module.exports.prelude = function(module1) {
-    window.$RefreshReg$ = function(type, id) {
-        Refresh.register(type, module1.id + " " + id);
-    };
-    window.$RefreshSig$ = Refresh.createSignatureFunctionForTransform;
-};
-module.exports.postlude = function(module1) {
-    if (isReactRefreshBoundary(module1.exports)) {
-        registerExportsForReactRefresh(module1);
-        if (module1.hot) {
-            module1.hot.dispose(function(data) {
-                if (Refresh.hasUnrecoverableErrors()) window.location.reload();
-                data.prevExports = module1.exports;
-            });
-            module1.hot.accept(function(getParents) {
-                var prevExports = module1.hot.data.prevExports;
-                var nextExports = module1.exports;
-                // Since we just executed the code for it, it's possible
-                // that the new exports make it ineligible for being a boundary.
-                var isNoLongerABoundary = !isReactRefreshBoundary(nextExports);
-                // It can also become ineligible if its exports are incompatible
-                // with the previous exports.
-                // For example, if you add/remove/change exports, we'll want
-                // to re-execute the importing modules, and force those components
-                // to re-render. Similarly, if you convert a class component
-                // to a function, we want to invalidate the boundary.
-                var didInvalidate = shouldInvalidateReactRefreshBoundary(prevExports, nextExports);
-                if (isNoLongerABoundary || didInvalidate) {
-                    // We'll be conservative. The only case in which we won't do a full
-                    // reload is if all parent modules are also refresh boundaries.
-                    // In that case we'll add them to the current queue.
-                    var parents = getParents();
-                    if (parents.length === 0) {
-                        // Looks like we bubbled to the root. Can't recover from that.
-                        window.location.reload();
-                        return;
-                    }
-                    return parents;
-                }
-                enqueueUpdate();
-            });
-        }
-    }
-};
-function isReactRefreshBoundary(exports) {
-    if (Refresh.isLikelyComponentType(exports)) return true;
-    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
-    return false;
-    var hasExports = false;
-    var areAllExportsComponents = true;
-    let isESM = "__esModule" in exports;
-    for(var key in exports){
-        hasExports = true;
-        if (key === "__esModule") continue;
-        var desc = Object.getOwnPropertyDescriptor(exports, key);
-        if (desc && desc.get && !isESM) // Don't invoke getters for CJS as they may have side effects.
-        return false;
-        var exportValue = exports[key];
-        if (!Refresh.isLikelyComponentType(exportValue)) areAllExportsComponents = false;
-    }
-    return hasExports && areAllExportsComponents;
-}
-function shouldInvalidateReactRefreshBoundary(prevExports, nextExports) {
-    var prevSignature = getRefreshBoundarySignature(prevExports);
-    var nextSignature = getRefreshBoundarySignature(nextExports);
-    if (prevSignature.length !== nextSignature.length) return true;
-    for(var i = 0; i < nextSignature.length; i++){
-        if (prevSignature[i] !== nextSignature[i]) return true;
-    }
-    return false;
-}
-// When this signature changes, it's unsafe to stop at this refresh boundary.
-function getRefreshBoundarySignature(exports) {
-    var signature = [];
-    signature.push(Refresh.getFamilyByType(exports));
-    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
-    // (This is important for legacy environments.)
-    return signature;
-    let isESM = "__esModule" in exports;
-    for(var key in exports){
-        if (key === "__esModule") continue;
-        var desc = Object.getOwnPropertyDescriptor(exports, key);
-        if (desc && desc.get && !isESM) continue;
-        var exportValue = exports[key];
-        signature.push(key);
-        signature.push(Refresh.getFamilyByType(exportValue));
-    }
-    return signature;
-}
-function registerExportsForReactRefresh(module1) {
-    var exports = module1.exports, id = module1.id;
-    Refresh.register(exports, id + " %exports%");
-    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
-    // (This is important for legacy environments.)
-    return;
-    let isESM = "__esModule" in exports;
-    for(var key in exports){
-        var desc = Object.getOwnPropertyDescriptor(exports, key);
-        if (desc && desc.get && !isESM) continue;
-        var exportValue = exports[key];
-        var typeID = id + " %exports% " + key;
-        Refresh.register(exportValue, typeID);
-    }
-}
-
-},{"7422ead32dcc1e6b":"786KC"}],"1Ej4k":[function(require,module,exports) {
+},{"593632ccebda0d3a":"21dqq","810078e9315626ae":"7OXxh"}],"1Ej4k":[function(require,module,exports) {
 module.exports = require("3c7dfbc14fc5ae17").getBundleURL("bLxZJ") + "search.5fabd6ab.svg" + "?" + Date.now();
 
 },{"3c7dfbc14fc5ae17":"lgJ39"}],"lgJ39":[function(require,module,exports) {
